@@ -1,9 +1,25 @@
 CC=gcc
-CFLAGS=-o
-DIR=src
-OBJDIR=obj
 
-main: $(DIR)/main.c $(DIR)/btree.c $(DIR)/repl.c
-	$(CC) $(DIR)/main.c $(DIR)/btree.c $(DIR)/repl.c $(CFLAGS) program
+CFLAGS= -Wall -Werror -g
 
+DIR=src/
 
+TARGET=program
+
+SRCS=src/main.c
+
+OBJS=$(SRCS:.c=.o)
+
+TODELETE=$(DIR)*.o
+
+$(TARGET): $(OBJS)
+	$(CC) $(CFLAGS) -o $(TARGET) $(OBJS)
+
+%.o: %.c
+	$(CC) $(CFLAGS) -c $< -o $@
+
+run: $(TARGET)
+	./$(TARGET)
+
+clean:
+	rm -rf $(TARGET) $(TODELETE) 

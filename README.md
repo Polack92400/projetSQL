@@ -1,2 +1,5 @@
-# class_db
-A simple skeleton code in C for a database
+# SQL project
+A mini SQL-like program
+
+# How to execute
+Go at the project's root, write "make" and hit enter, then write "make run" and hit enter
