@@ -6,7 +6,7 @@
 
 
 int main(int argc, char* argv[], char* envp[]){
-  printf("Welcome to mini-sql CLI\n");
+  printf("\nWelcome to mini-sql CLI\n--------------------\nIf you get lost, write .help and hit enter\n\n");
 
   repl();
   return 0;

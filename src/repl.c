@@ -5,8 +5,6 @@
 #include <sys/types.h>
 
 
-
-
 typedef enum {
   META_COMMAND_SUCCESS,
   META_COMMAND_UNRECOGNIZED_COMMAND
@@ -62,14 +60,21 @@ void close_input_buffer(InputBuffer* input_buffer) {
     free(input_buffer);
 }
 
+void display_commands() {
+	printf("\n.exit -> use that to exit the prompt\nSelect -> use that to print members of the table\nInsert -> use that to insert new data into the table\nDelete -> use that to delete data from the table\n\n");
+}
 
 MetaCommandResult do_meta_command(InputBuffer* input_buffer) {
   if (strcmp(input_buffer->buffer, ".exit") == 0) {
     close_input_buffer(input_buffer);
     exit(EXIT_SUCCESS);
-  } else {
-    //TODO  here implement handling of other input as .exit
+  } else if  (strcmp(input_buffer->buffer, ".help") == 0) {
+	display_commands();
+	return META_COMMAND_SUCCESS;
+    }
+  else {
     return META_COMMAND_UNRECOGNIZED_COMMAND;
+
   }
 }
 
