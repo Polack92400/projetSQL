@@ -1,16 +1,7 @@
-
-typedef enum {
-	INT, STRING, BOOLEAN
-} ColumnType;
-
-typedef struct {
-	char *name;
-} Column;
-
-typedef struct {
-	Column *column;
-	char *name;	
-} Table;
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+#include "table.h"
 
 Table *create_table(char *name) 
 {	

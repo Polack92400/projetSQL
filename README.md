@@ -1,3 +1,6 @@
+Romain Polack 3SI3
+
+
 # SQL project
 A mini SQL-like program
 
