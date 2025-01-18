@@ -18,8 +18,9 @@ $(TARGET): $(OBJS)
 %.o: %.c
 	$(CC) $(CFLAGS) -c $< -o $@
 
-run: $(TARGET)
+run: $(TARGET) 
 	./$(TARGET)
+	make clean
 
 clean:
 	rm -rf $(TARGET) $(TODELETE) 

@@ -20,6 +20,12 @@ typedef struct {
   StatementType type;
 } Statement;
 
+/*
+typedef struct {
+	ArgumentType type;
+} Argument;
+*/
+
 typedef struct {
   char* buffer;
   size_t buffer_length;
@@ -40,7 +46,7 @@ MetaCommandResult do_meta_command(InputBuffer* input_buffer);
 
 PrepareResult prepare_statement(InputBuffer* input_buffer, Statement* statement);
 
-void execute_statement(Statement* statement);
+void execute_statement(Statement* statement, InputBuffer* input_buffer);
 
 void repl(void);
 
