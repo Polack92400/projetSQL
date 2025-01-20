@@ -32,3 +32,44 @@ void insert_row(Node **root, void *data, int (*compare)(void *, void *)) {
     }
 }
 
+void inorderTraversal(Node* root)
+{
+    if (root == NULL) {
+        return;
+    }
+
+    inorderTraversal(root->left);
+    printf("%d ", root->data);
+    inorderTraversal(root->right);
+}
+
+Node* search(Node* root, int data)
+{
+    if (root == NULL) {
+        return NULL;
+    }
+
+    Node* temp;
+    Node* queue[100];
+    int front = -1, rear = -1;
+    queue[++rear] = root;
+
+    while (front != rear) {
+        temp = queue[++front];
+
+        if (temp->data == data) {
+            return temp;
+        }
+
+        if (temp->left != NULL) {
+            queue[++rear] = temp->left;
+        }
+
+        if (temp->right != NULL) {
+            queue[++rear] = temp->right;
+        }
+    }
+    return NULL;
+
+}
+

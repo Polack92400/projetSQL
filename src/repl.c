@@ -95,7 +95,7 @@ int count_arguments(InputBuffer* input_buffer) {
     }
 
     free(buffer_copy);
-    printf("cpt = %d\n", cpt);
+    //printf("cpt = %d\n", cpt);
     return cpt;
 }
 
@@ -133,23 +133,45 @@ char** split(InputBuffer* input_buffer) {
     return arguments;
 }
 
+
+/*
+check_arguments_select(int nbr_arguments, char** arguments) {
+
+	for (int i = 0; i < nbr_arguments; i++) {
+		//printf("%s\n", arguments[i]);
+		if (arguments[1]=="*" && arguments[2] == NULL){
+			print_table()
+		}
+
+		free(arguments[i]);     }
+	free(arguments); 
+
+
+
+}
+ */
+
 void execute_statement(Statement* statement, InputBuffer* input_buffer) {
-    int nbr_arguments = count_arguments(input_buffer);
-    char** arguments = split(input_buffer);
+	int nbr_arguments = count_arguments(input_buffer);
+	char** arguments = split(input_buffer);
+	for (int i = 0; i < nbr_arguments; i++) {
+		printf("%s\n", arguments[i]);
+		if (strcmp(arguments[1], "*") == 0 && arguments[2] == NULL){
+			//print_table()
+		}
 
-    for (int i = 0; i < nbr_arguments; i++) {
-        printf("%s\n", arguments[i]);
-        free(arguments[i]);     }
-    free(arguments); 
+		free(arguments[i]);     }
+	free(arguments); 
 
-    switch (statement->type) {
-        case (STATEMENT_INSERT):
-            // TODO: Implement the INSERT command here
-            break;
-        case (STATEMENT_SELECT):
-            // TODO: Implement the SELECT command here
-            break;
-    }
+
+	switch (statement->type) {
+		case (STATEMENT_INSERT):
+			// TODO: Implement the INSERT command here
+			break;
+		case (STATEMENT_SELECT):
+			// TODO: Implement the SELECT command here
+			break;
+	}
 }
 
 void repl(){
